@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-3.1.0.min.js"></script>
+	</head>
+
+	<body>
+		<form id="form">
+			<input type="text" placeholder="用户名" name="name" id="name"><br />
+			<input type="text" placeholder="账号" name="account" id="account"><br />
+			<input type="password" name="password" placeholder="密码" id="password"><br />
+			<div onclick="test()">添加一条数据</div>
+		</form>
+		
+		<script>
+			function test2() {
+				$.ajax({
+					url: "http://127.0.0.1:8080/user", //请求路径
+//					data: {
+//
+//					},	
+					type: "GET", //请求方式
+					success: function(res) {
+						console.log("成功")
+					}, //ajax引擎一般用不到；状态信息；抛出的异常信息
+					error: function(XMLhttpsRequest, textStatus, errorThrown) {
+						console.log("失败")
+					}
+				});
+			};
+			test2()
+			function test() {
+				$.ajax({
+					url: "http://127.0.0.1:8080/adduser", //请求路径
+					data:$('#form').serialize(),	
+					type: "POST", //请求方式
+					success: function(res) {
+						console.log("成功")
+					}, //ajax引擎一般用不到；状态信息；抛出的异常信息
+					error: function(XMLhttpsRequest, textStatus, errorThrown) {
+						console.log("失败")
+					}
+				});
+			};
+		</script>
+	</body>
+
+</html>
