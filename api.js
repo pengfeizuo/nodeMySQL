@@ -3,7 +3,7 @@ const {pool,router,Result,app}=require('./config/connect');
 
 function api (){
 	app.post('/adduser',(req,res)=>{
-		var  addSql = "INSERT INTO `node_test`.`user` (`account`, `password`, `name`) VALUES ('"+req.body.account+"', '"+req.body.password+"', '"+req.body.name+"')";
+		var  addSql = "INSERT INTO `node_test`.`user` (`account`, `password`) VALUES ('"+req.body.account+"', '"+req.body.password+"')";
 		var data = JSON.parse(JSON.stringify(req.body)) 
 		pool.getConnection((err,conn)=>{
 			conn.query(addSql,(e,r)=>res.json(new Result({data:r})));
